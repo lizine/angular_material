@@ -16,6 +16,11 @@ function UserService($q){
 	avatar: 'Stout',
 	content: 'Stout is dark and oh, so GOOD'
 	},
+	{
+	name: 'Wheat Beer',
+	avatar: 'Wheat',
+	content: 'Wheat is light and oh, so GOOD'
+	},
 
 	];
 	 // Promise-based API
