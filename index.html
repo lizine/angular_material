@@ -4,7 +4,10 @@
 		<link rel="stylesheet" href="node_modules/angular-material/angular-material.min.css">
 		<link rel="stylesheet" href="app.css">
 	</head>
-<body ng-app="MyApp" layout="column">
+<body ng-app="MyApp" layout="column"
+ng-controller="UserController as ul"
+>
+
 <md-toolbar>
 	<h1>My awesome Angular Material App</h1>
 </md-toolbar>
@@ -13,32 +16,30 @@
 <md-sidenav md-is-locked-open="true" class="md-whiteframe-4dp">
 
 <md-list>
-	<md-list-item>
-		<md-button>
+	<md-list-item ng-repeat="u in ul.users">
+		<md-button ng-click="ul.selectUser(u)">
 			<md-icon md-svg-src="Amber.svg" class="avatar"></md-icon>
-			Amber Ale
+			{{u.name}}
 		</md-button>
 	</md-list-item>
-	<md-list-item>
-		<md-button>
-			<md-icon md-svg-src="images/Stout.svg" class="avatar"></md-icon>
-			Stout
-		</md-button>
-	</md-list-item>
+	
 </md-list>
 </md-sidenav>
 <md-content id="content" flex>
 <md-icon md-svg-src="images/beer_icon.svg" class="avatar"></md-icon>
-<h2>Amber Ale</h2>
-<p>Amber Ale is reddish and oh, do delicious!</p>
+<h2>{{ul.selected.name}}</h2>
+<p>{{ul.selected.content}}</p>
 </md-content>
 </div>
 <script src="node_modules/angular/angular.min.js"></script>
 <script src="node_modules/angular-animate/angular-animate.js"></script>
 <script src="node_modules/angular-aria/angular-aria.min.js"></script>
 <script src="node_modules/angular-material/angular-material.min.js"></script>
+<script src="Users.js"></script>
+<script src="UserService.js"></script>
+<script src="UserController.js"></script>
 <script>
-	angular.module("MyApp", ['ngMaterial']).run(function(){
+	angular.module("MyApp", ['ngMaterial' ,'users']).run(function(){
 		console.log("my app is ready!");
 	});
 </script>
